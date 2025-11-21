@@ -1,0 +1,496 @@
+/* پالت رنگی مخصوص میمیکس */
+:root {
+  --green-900: #0F2A1D;
+  --green-800: #375534;
+  --green-600: #6B9071;
+  --green-300: #AEC3B0;
+  --green-100: #E3EED4;
+
+  --text-main: #F9FFF7;
+  --text-muted: rgba(227, 238, 212, 0.78);
+  --glass-bg: rgba(15, 42, 29, 0.92);
+  --glass-border: rgba(227, 238, 212, 0.12);
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.6);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  font-family: "Vazirmatn", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+}
+
+body {
+  color: var(--text-main);
+  background: radial-gradient(circle at top, #375534 0, #0F2A1D 55%, #0B1C14 100%);
+}
+
+/* همه کنترل‌ها هم از همون فونت پایه استفاده کنن */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* بک‌گراند کلی */
+.fx-app-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.fx-app-root {
+  width: 100%;
+  max-width: 1120px;
+}
+
+/* هدر بالا */
+.fx-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.fx-brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.fx-brand-main {
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.fx-brand-sub {
+  font-size: 0.9rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(227, 238, 212, 0.08);
+  border: 1px solid rgba(227, 238, 212, 0.18);
+  color: var(--green-100);
+}
+
+.fx-version-pill {
+  font-size: 0.75rem;
+  color: var(--green-100);
+  background: rgba(227, 238, 212, 0.06);
+  border-radius: 999px;
+  padding: 0.2rem 0.8rem;
+  border: 1px solid rgba(227, 238, 212, 0.18);
+}
+
+/* باکس اصلی */
+.fx-shell {
+  background: var(--glass-bg);
+  border-radius: 1.75rem;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft);
+  padding: 1.5rem 1.75rem 1.75rem;
+  backdrop-filter: blur(18px);
+}
+
+/* چیدمان دو ستونه */
+.fx-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+/* ستون تنظیمات */
+.fx-controls-header {
+  margin-bottom: 1rem;
+}
+
+.fx-title {
+  margin: 0 0 0.3rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.fx-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.fx-field {
+  margin-bottom: 0.9rem;
+}
+
+.fx-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--green-100);
+  margin-bottom: 0.3rem;
+}
+
+.fx-label-value {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.fx-textarea {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(227, 238, 212, 0.18);
+  background: rgba(15, 42, 29, 0.96);
+  color: var(--text-main);
+  padding: 0.75rem 0.85rem;
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 4.5rem;
+}
+
+.fx-textarea::placeholder {
+  color: rgba(227, 238, 212, 0.45);
+}
+
+.fx-select,
+.fx-range {
+  width: 100%;
+}
+
+.fx-select {
+  border-radius: 0.9rem;
+  border: 1px solid rgba(227, 238, 212, 0.18);
+  background: rgba(15, 42, 29, 0.96);
+  color: var(--text-main);
+  padding: 0.45rem 0.65rem;
+  font-size: 0.85rem;
+}
+
+.fx-range {
+  accent-color: var(--green-300);
+}
+
+/* ردیف‌های نصف نصف */
+.fx-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.fx-field-half {
+  flex: 1;
+}
+
+/* استایل دکمه‌های استایل آماده */
+.fx-style-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.fx-style-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(227, 238, 212, 0.18);
+  background: rgba(227, 238, 212, 0.04);
+  color: var(--green-100);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.fx-style-btn--active,
+.fx-style-btn:hover {
+  background: rgba(227, 238, 212, 0.12);
+  border-color: rgba(227, 238, 212, 0.35);
+  transform: translateY(-1px);
+}
+
+/* انتخاب رنگ‌ها */
+.fx-color-row {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.fx-color-dot {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 999px;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.fx-color-dot--active {
+  box-shadow: 0 0 0 2px rgba(227, 238, 212, 0.85);
+}
+
+/* دات بدون رنگ = ترنسپرنت */
+#fxBgColors .fx-color-dot[data-color="transparent"] {
+  background: radial-gradient(circle at 30% 30%, #ffffff 0, #ffffff 35%, transparent 40%, transparent 100%);
+}
+
+/* ستون پیش‌نمایش */
+.fx-preview-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.fx-preview-card {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 9 / 16;
+  border-radius: 1.4rem;
+  background: radial-gradient(circle at top, #253f30 0, #08140E 55%, #050A07 100%);
+  border: 1px solid rgba(227, 238, 212, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  overflow: hidden;
+}
+
+/* متن پیش‌نمایش؛ فقط یک باکس وسط کارت، بدون position:absolute */
+.fx-preview-text {
+  display: inline-block;
+  padding: 0.4rem 0.6rem;
+  text-align: center;
+  color: var(--text-main);
+  font-size: 24px;
+  font-weight: 600;
+  white-space: pre-line; /* اینترها در خروجی و پیش‌نمایش حفظ می‌شوند */
+}
+
+
+
+/* استایل‌های مختلف متن */
+.fx-style-simple {
+  text-shadow: none;
+  -webkit-text-stroke: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.fx-style-shadow {
+  text-shadow: 0 6px 22px rgba(0, 0, 0, 0.8);
+}
+
+.fx-style-outline {
+  -webkit-text-stroke: 2px #000000;
+  text-shadow: none;
+}
+
+.fx-style-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(227, 238, 212, 0.4);
+}
+
+/* پیام زیر پیش‌نمایش */
+.fx-preview-hint {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ریسپانسیو تبلت */
+@media (max-width: 960px) {
+  .fx-shell {
+    padding: 1.25rem 1.1rem 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .fx-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .fx-preview {
+    order: -1; /* پیش‌نمایش بیاد بالا روی تبلت */
+  }
+
+  .fx-preview-card {
+    max-width: 280px;
+  }
+}
+
+/* ریسپانسیو موبایل */
+@media (max-width: 640px) {
+  .fx-app-bg {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  .fx-shell {
+    padding: 1rem 0.85rem 1.25rem;
+    border-radius: 1.3rem;
+  }
+
+  .fx-top-bar {
+    margin-bottom: 0.5rem;
+  }
+
+  .fx-title {
+    font-size: 1rem;
+  }
+
+  .fx-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .fx-preview-card {
+    max-width: 240px;
+    padding: 0.9rem;
+  }
+
+  .fx-preview-text {
+    font-size: 1.35rem;
+  }
+
+  .fx-row {
+    flex-direction: column;
+  }
+}
+
+/* ===== دکمه‌های اکشن زیر پیش‌نمایش ===== */
+
+.fx-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-top: 0.3rem;
+}
+
+.fx-primary-btn,
+.fx-ghost-btn {
+  border-radius: 999px;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid rgba(227, 238, 212, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease, box-shadow 0.12s ease;
+}
+
+.fx-primary-btn {
+  background: linear-gradient(135deg, var(--green-300), var(--green-600));
+  color: #0F2A1D;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+}
+
+.fx-primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.7);
+}
+
+.fx-primary-btn:disabled {
+  opacity: 0.75;
+  cursor: default;
+  box-shadow: none;
+}
+
+.fx-ghost-btn {
+  background: rgba(227, 238, 212, 0.06);
+  color: var(--green-100);
+}
+
+.fx-ghost-btn:hover {
+  background: rgba(227, 238, 212, 0.12);
+  border-color: rgba(227, 238, 212, 0.35);
+  transform: translateY(-1px);
+}
+
+/* موبایل: دکمه‌ها یک‌ستون شوند */
+@media (max-width: 640px) {
+  .fx-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fx-primary-btn,
+  .fx-ghost-btn {
+    width: 100%;
+  }
+}
+/* ===== تب‌های تنظیمات (فونت / استایل / رنگ / افکت‌ها) ===== */
+
+/* حالت پیش‌فرض: دسکتاپ
+   - تب‌ها مخفی
+   - همه‌ی پنل‌ها همزمان دیده می‌شن
+*/
+.fx-tabs {
+  display: none;
+}
+
+.fx-tab {
+  flex: 1;
+  border-radius: 999px;
+  border: 1px solid rgba(227, 238, 212, 0.16);
+  background: rgba(227, 238, 212, 0.04);
+  color: var(--green-100);
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.fx-tab.active {
+  background: rgba(227, 238, 212, 0.18);
+  border-color: rgba(227, 238, 212, 0.45);
+  color: var(--green-900);
+  transform: translateY(-1px);
+}
+
+/* روی دسکتاپ همه تب‌کانتنت‌ها دیده بشن */
+.fx-tab-content {
+  display: block;
+}
+
+/* موبایل: تب‌ها فعال، فقط تب انتخاب‌شده دیده می‌شه */
+@media (max-width: 640px) {
+  .fx-tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin: 0.5rem 0 0.75rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--glass-bg);
+    padding-top: 0.25rem;
+  }
+
+  .fx-tab {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.3rem;
+  }
+
+  .fx-tab-content {
+    display: none;
+  }
+
+  .fx-tab-content.active {
+    display: block;
+  }
+}

@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>Fontix | سازنده متن استوری میمیکس</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- فونت وزیرمتن -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- استایل مخصوص Fontix -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="fx-app-bg">
+    <div class="fx-app-root">
+      <!-- هدر -->
+      <header class="fx-top-bar">
+        <div class="fx-brand">
+          <span class="fx-brand-main">میمیکس</span>
+          <span class="fx-brand-sub">Fontix</span>
+        </div>
+
+        <div class="fx-version-pill">
+          <span>v0.1 • beta</span>
+        </div>
+      </header>
+
+      <!-- باکس اصلی -->
+      <main class="fx-shell">
+        <section class="fx-layout">
+          <!-- ستون تنظیمات -->
+          <section class="fx-controls">
+            <div class="fx-controls-header">
+              <h1 class="fx-title">سازنده متن استوری و استیکر متنی</h1>
+              <p class="fx-subtitle">
+                متنت رو اینجا بنویس، فونت و استایل رو انتخاب کن؛ سمت چپ پیش‌نمایش رو می‌بینی.
+              </p>
+            </div>
+
+            <!-- متن -->
+            <div class="fx-field">
+              <label class="fx-label">
+                <span>متن استوری / استیکر</span>
+              </label>
+              <textarea
+                id="fxInput"
+                class="fx-textarea"
+                placeholder="مثلاً: امروز وقتشه یه استوری خفن بسازی 😎"
+              ></textarea>
+            </div>
+
+            <!-- تب‌ها (دسکتاپ و موبایل) -->
+            <div class="fx-tabs">
+              <button class="fx-tab active" data-tab="fontTab">فونت</button>
+              <button class="fx-tab" data-tab="styleTab">استایل</button>
+              <button class="fx-tab" data-tab="colorTab">رنگ</button>
+              <button class="fx-tab" data-tab="extraTab">افکت‌ها</button>
+            </div>
+
+            <!-- تب فونت -->
+            <div id="fontTab" class="fx-tab-content active">
+              <div class="fx-field">
+                <div class="fx-label">
+                  <span>فونت</span>
+                </div>
+                <select id="fxFont" class="fx-select">
+                  <option value="Vazirmatn">Vazirmatn (پیش‌فرض)</option>
+                  <option value="Tahoma">Tahoma</option>
+                  <option value="IRANSans">IRANSans</option>
+                </select>
+              </div>
+
+              <div class="fx-field">
+                <div class="fx-label">
+                  <span>اندازه فونت</span>
+                  <span id="fxSizeValue" class="fx-label-value">24px</span>
+                </div>
+                <input
+                  id="fxFontSize"
+                  type="range"
+                  class="fx-range"
+                  min="10"
+                  max="50"
+                  value="24"
+                >
+              </div>
+
+              <div class="fx-field">
+                <div class="fx-label">
+                  <span>ضخامت</span>
+                  <span id="fxWeightValue" class="fx-label-value">400</span>
+                </div>
+                <input
+                  id="fxFontWeight"
+                  type="range"
+                  class="fx-range"
+                  min="200"
+                  max="900"
+                  step="100"
+                  value="400"
+                >
+              </div>
+            </div>
+
+            <!-- تب استایل -->
+            <div id="styleTab" class="fx-tab-content">
+              <div class="fx-field">
+                <div class="fx-label">
+                  <span>استایل آماده</span>
+                </div>
+                <div class="fx-style-buttons">
+                  <button type="button" class="fx-style-btn fx-style-btn--active" data-style="simple">
+                    ساده
+                  </button>
+                  <button type="button" class="fx-style-btn" data-style="shadow">
+                    سایه
+                  </button>
+                  <button type="button" class="fx-style-btn" data-style="badge">
+                    باکس استیکری
+                  </button>
+                  <button type="button" class="fx-style-btn" data-style="outline">
+                    دورخط
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- تب رنگ -->
+            <div id="colorTab" class="fx-tab-content">
+              <div class="fx-field">
+                <div class="fx-label">
+                  <span>رنگ متن</span>
+                </div>
+                <div id="fxTextColors" class="fx-color-row">
+                  <button type="button" class="fx-color-dot" data-color="#E3EED4"></button>
+                  <button type="button" class="fx-color-dot" data-color="#ffffff"></button>
+                  <button type="button" class="fx-color-dot" data-color="#000000"></button>
+                  <button type="button" class="fx-color-dot" data-color="#ffcc33"></button>
+                  <button type="button" class="fx-color-dot" data-color="#ff4d4d"></button>
+                  <button type="button" class="fx-color-dot" data-color="#00d084"></button>
+                </div>
+              </div>
+
+              <div class="fx-field">
+                <div class="fx-label">
+                  <span>پس‌زمینه متن</span>
+                </div>
+                <div id="fxBgColors" class="fx-color-row">
+                  <button type="button" class="fx-color-dot" data-color="transparent"></button>
+                  <button type="button" class="fx-color-dot" data-color="rgba(0,0,0,0.6)"></button>
+                  <button type="button" class="fx-color-dot" data-color="rgba(255,255,255,0.14)"></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- تب افکت‌ها -->
+            <div id="extraTab" class="fx-tab-content">
+              <div class="fx-field">
+                <div class="fx-label">
+                  <span>فاصله خطوط</span>
+                  <span id="fxLineHeightValue" class="fx-label-value">1.4</span>
+                </div>
+                <input
+                  id="fxLineHeight"
+                  type="range"
+                  class="fx-range"
+                  min="1"
+                  max="2"
+                  step="0.1"
+                  value="1.4"
+                >
+              </div>
+
+              <div class="fx-field">
+                <div class="fx-label">
+                  <span>فاصله بین حروف</span>
+                  <span id="fxLetterValue" class="fx-label-value">0</span>
+                </div>
+                <input
+                  id="fxLetterSpacing"
+                  type="range"
+                  class="fx-range"
+                  min="0"
+                  max="10"
+                  step="0.5"
+                  value="0"
+                >
+              </div>
+            </div>
+          </section>
+
+          <!-- ستون پیش‌نمایش -->
+          <section class="fx-preview">
+            <div class="fx-preview-frame">
+              <div class="fx-preview-card">
+  <div
+    id="fxPreviewText"
+    class="fx-preview-text"
+    contenteditable="true"
+    data-placeholder="متنی برای پیش‌نمایش وارد کن..."
+  >
+    متنی برای پیش‌نمایش وارد کن...
+  </div>
+</div>
+
+
+              <div class="fx-actions">
+                <button type="button" class="fx-primary-btn" id="fxDownload">
+                  دانلود  PNG
+                </button>
+                <button type="button" class="fx-ghost-btn" id="fxCopy">
+                  کپی تصویر
+                </button>
+              </div>
+
+              <p class="fx-preview-hint">
+                این باکس در نسبت استوری (۹:۱۶) طراحی شده. خروجی PNG برای سوشال‌مدیا مناسب است.
+              </p>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- کتابخانه html2canvas برای گرفتن خروجی PNG -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <!-- اسکریپت منطق Fontix -->
+  <script src="fontix.js"></script>
+</body>
+</html>

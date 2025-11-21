@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>داشبورد ادمین | میمیکس</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- لود فونت وزیرمتن مثل صفحه اصلی و لاگین -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <!-- استایل اصلی سایت -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- استایل‌های مخصوص پنل ادمین -->
+  <style>
+    .admin-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .admin-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .admin-subtitle {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+    .admin-table th,
+    .admin-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(227,238,212,0.12);
+      text-align: right;
+    }
+    .admin-table th {
+      font-weight: 600;
+      color: var(--green-300);
+      background: rgba(227,238,212,0.04);
+    }
+    .admin-empty {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .admin-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid rgba(227,238,212,0.25);
+      background: rgba(227,238,212,0.06);
+      color: var(--green-100);
+      gap: 6px;
+    }
+    .admin-logout {
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--green-100);
+      opacity: 0.85;
+    }
+    .admin-logout:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-bg">
+    <div class="app-root">
+      <header class="top-bar">
+        <div class="brand">
+          <span class="brand-text">پنل ادمین میمیکس</span>
+        </div>
+
+        <div class="header-right">
+          <span class="admin-logout" id="adminLogout">خروج از پنل</span>
+        </div>
+
+        <div class="version-pill">
+          <span>admin • beta</span>
+        </div>
+      </header>
+
+      <main class="shell">
+        <div class="admin-header-row">
+          <div>
+            <h1 class="admin-title">داشبورد کاربران</h1>
+            <p class="admin-subtitle">
+              در نسخه فعلی، اطلاعات از مرورگر فعلی (localStorage) خوانده می‌شود. برای دیتابیس واقعی بعداً وصل می‌کنیم.
+            </p>
+          </div>
+
+          <div class="admin-badge" id="adminUserCount">
+            کاربران: ۰
+          </div>
+        </div>
+
+        <div id="adminTableWrapper"></div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // اگر لاگین ادمین نباشد → برگرد به صفحه ورود
+    const loggedIn = localStorage.getItem("mimix_admin_logged_in");
+    if (loggedIn !== "1") {
+      window.location.href = "/admini/index.html";
+    }
+
+    const logoutBtn = document.getElementById("adminLogout");
+    logoutBtn?.addEventListener("click", () => {
+      localStorage.removeItem("mimix_admin_logged_in");
+      window.location.href = "/admini/index.html";
+    });
+
+    // شبیه‌سازی دیتابیس با استفاده از localStorage فعلی سایت اصلی
+    const phone = localStorage.getItem("mimix_phone");
+    const name  = localStorage.getItem("mimix_name");
+    const insta = localStorage.getItem("mimix_insta");
+    const birth = localStorage.getItem("mimix_birth");
+    const plan  = localStorage.getItem("mimix_plan") || "free";
+
+    const wrapper = document.getElementById("adminTableWrapper");
+    const countEl = document.getElementById("adminUserCount");
+
+    if (!phone) {
+      wrapper.innerHTML = `
+        <p class="admin-empty">
+          هنوز هیچ کاربری روی این مرورگر ثبت نشده است. از صفحه اصلی یک بار با شماره موبایل وارد شو تا اینجا ببینی.
+        </p>
+      `;
+      countEl.textContent = "کاربران: ۰";
+    } else {
+      countEl.textContent = "کاربران: ۱";
+
+      const displayPhone = phone.length === 10 ? "0" + phone : phone;
+
+      const html = `
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>شماره موبایل</th>
+              <th>نام</th>
+              <th>آیدی اینستاگرام</th>
+              <th>تاریخ تولد</th>
+              <th>پلن</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>${displayPhone}</td>
+              <td>${name || "-"}</td>
+              <td>${insta || "-"}</td>
+              <td>${birth || "-"}</td>
+              <td>${plan === "pro" ? "پرو (نمایشی)" : "رایگان"}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      wrapper.innerHTML = html;
+    }
+  </script>
+</body>
+</html>

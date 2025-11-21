@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>میمیکس | جعبه‌ابزار تولید محتوا</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- رنگ سیستم برای PWA / مرورگر -->
+  <meta name="theme-color" content="#0F2A1D">
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  <!-- آیکن‌ها -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png">
+  <link rel="shortcut icon" href="/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+  <!-- فونت وزیرمتن -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/persian-date/dist/persian-date.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-bg">
+    <div class="app-root">
+      <!-- هدر بالا -->
+      <header class="top-bar">
+        <div class="brand">
+          <img class="brand-logo" src="/assets/mimix-logo.png" alt="لوگوی میمیکس">
+          <span class="brand-text">میمیکس</span>
+        </div>
+
+        <div class="header-right">
+          <button class="account-pill" id="accountButton">
+            ورود / ساخت حساب
+          </button>
+        </div>
+
+        <div class="version-pill">
+          <span>v0.1 • beta</span>
+        </div>
+      </header>
+
+      <!-- باکس اصلی -->
+      <main class="shell">
+        <section class="shell-header">
+          <h1 class="shell-title">جعبه‌ابزار تولید محتوا | اینستاگرام، یوتیوب، آپارات</h1>
+          <p class="shell-subtitle">
+            برای شروع یکی از ابزارها رو انتخاب کن.
+          </p>
+          <div class="status-bar">
+            <span class="status-dot status-dot--online"></span>
+            <span class="status-text">
+              آپلودسنتر فعلاً روی دامنه قدیمی
+              <strong>up.mimixmag.ir</strong>
+              فعال است.
+            </span>
+          </div>
+        </section>
+
+        <!-- کارت ابزارها -->
+        <section class="tools">
+          <div class="tools-grid">
+            <!-- آپلود سنتر (فعلاً فعال برای همه) -->
+            <button
+              type="button"
+              class="tool-card tool-card--primary"
+              data-url="https://up.mimixmag.ir"
+              data-min-plan="free"
+            >
+              <div class="tool-tag">ابزار فایل</div>
+              <h2 class="tool-title">آپلود سنتر میمیکس</h2>
+              <p class="tool-desc">
+                آپلود و مدیریت فایل‌ها، لینک دانلود تمیز؛ مناسب ارسال برای کارفرما.
+              </p>
+              <div class="tool-badge tool-badge--active">در حال استفاده</div>
+            </button>
+
+            <!-- سازنده متن استوری (طراحی) -->
+            <button
+              type="button"
+              class="tool-card tool-card--soon"
+              data-url=""
+              data-min-plan="free"
+              data-disabled="true"
+            >
+              <div class="tool-tag">به‌زودی</div>
+              <h2 class="tool-title">سازنده متن استوری</h2>
+              <p class="tool-desc">
+                نوشتن متن، انتخاب فونت و استایل، خروجی PNG برای استوری.
+              </p>
+              <div class="tool-badge">در حال طراحی</div>
+            </button>
+
+            <!-- ابزار شماره ۳ (فقط پلن پرو بعداً) -->
+            <button
+              type="button"
+              class="tool-card tool-card--soon"
+              data-url=""
+              data-min-plan="pro"
+              data-disabled="true"
+            >
+              <div class="tool-tag">به‌زودی</div>
+              <h2 class="tool-title">ابزار شماره ۳</h2>
+              <p class="tool-desc">
+                یک ابزار تخصصی برای تولید محتوای ویدیویی (در آینده).
+              </p>
+              <div class="tool-badge">فقط پلن پرو</div>
+            </button>
+
+            <!-- ابزار شماره ۴ (فقط پلن پرو بعداً) -->
+            <button
+              type="button"
+              class="tool-card tool-card--soon"
+              data-url=""
+              data-min-plan="pro"
+              data-disabled="true"
+            >
+              <div class="tool-tag">به‌زودی</div>
+              <h2 class="tool-title">ابزار شماره ۴</h2>
+              <p class="tool-desc">
+                ایده‌ها و ابزارهای آماده برای پیج‌های مختلف اینستاگرام.
+              </p>
+              <div class="tool-badge">فقط پلن پرو</div>
+            </button>
+          </div>
+        </section>
+
+        <div class="support-bar">
+          <span class="status-dot status-dot--online"></span>
+          <span class="support-label">پشتیبانی آنلاین</span>
+
+          <div class="support-actions">
+            <a
+              href="https://goftino.com/c/63bPqp"
+              target="_blank"
+              class="support-circle"
+              aria-label="واتساپ"
+            >
+              <img src="/icons/whatsapp.svg" class="support-icon" alt="">
+            </a>
+
+            <a
+              href="https://t.me/mimixmanager"
+              target="_blank"
+              class="support-circle"
+              aria-label="تلگرام"
+            >
+              <img src="/icons/telegram.svg" class="support-icon" alt="">
+            </a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- مودال لاگین / ساخت حساب -->
+  <div id="authModal" class="auth-modal auth-hidden">
+    <div class="auth-backdrop"></div>
+    <div class="auth-panel">
+      <div class="auth-header">
+        <h2 class="auth-title">ورود / ساخت حساب</h2>
+        <button class="auth-close" id="authClose" aria-label="بستن">×</button>
+      </div>
+
+      <p class="auth-caption">
+        شماره موبایل‌ت رو بزن؛ فعلاً لاگین نمایشی است، بعداً به پنل پیامکی و بک‌اند وصل می‌کنیم.
+      </p>
+
+<form class="auth-form" id="authForm" autocomplete="off">
+  <!-- شماره موبایل (اول فقط همین دیده می‌شود) -->
+  <label class="auth-field" id="authPhoneField">
+    <span>شماره موبایل</span>
+    <input
+      id="authPhone"
+      type="tel"
+      dir="ltr"
+      maxlength="11"
+      placeholder="9991019918"
+      required
+    >
+  </label>
+
+  <!-- محل نمایش خطای قرمز شماره -->
+  <p class="auth-error" id="authPhoneError"></p>
+
+  <!-- فیلدهای اضافه؛ اول مخفی هستند، اگر شماره جدید باشد و درست وارد شود نمایش داده می‌شوند -->
+  <div id="authExtraFields" class="auth-extra auth-extra--hidden">
+    <!-- نام (اختیاری) -->
+    <label class="auth-field">
+      <span>نام</span>
+      <input
+        id="authName"
+        type="text"
+        placeholder="مثلاً میمیکس"
+      >
+    </label>
+
+    <!-- آی‌دی اینستاگرام (اختیاری) -->
+    <label class="auth-field">
+      <span>آی‌دی اینستاگرام</span>
+      <input
+        id="authInsta"
+        type="text"
+        dir="ltr"
+        placeholder="@instagram_id"
+      >
+    </label>
+
+    <!-- تاریخ تولد (اختیاری) -->
+    <label class="auth-field">
+      <span>تاریخ تولد</span>
+<input 
+  id="authBirth"
+  type="text"
+  class="date-input"
+  readonly
+>
+
+    </label>
+
+    <p class="auth-note auth-note--highlight">
+      اطلاعات بالا را وارد کنید تا امکانات پلن پرو برای شما فعال شود و در روز تولدتان از ما هدیه بگیرید.
+    </p>
+  </div>
+
+  <!-- کد یکبار مصرف (فعلاً غیرفعال) -->
+  <label class="auth-field auth-field--disabled">
+    <span>کد یکبار مصرف</span>
+    <input
+      type="text"
+      dir="ltr"
+      inputmode="numeric"
+      placeholder="بعداً از طریق اس‌ام‌اس"
+      disabled
+    >
+  </label>
+
+  <button type="submit" class="auth-submit">
+    ادامه (نسخه‌ی نمایشی)
+  </button>
+
+  <p class="auth-note">
+    بعداً این لاگین به OTP واقعی و پلن‌های رایگان / پرو وصل می‌شه.
+  </p>
+</form>
+    </div>
+  </div>
+
+  <!-- مودال اطلاعات حساب کاربری -->
+  <div id="accountModal" class="auth-modal auth-hidden">
+    <div class="auth-backdrop"></div>
+    <div class="auth-panel">
+      <div class="auth-header">
+        <h2 class="auth-title">حساب کاربری</h2>
+        <button class="auth-close" id="accountClose" aria-label="بستن">×</button>
+      </div>
+
+      <p class="auth-caption">
+        خلاصه وضعیت حساب فعلی‌ات.
+      </p>
+
+      <div class="auth-form">
+        <div class="auth-field">
+          <span>شماره موبایل</span>
+          <div id="accountPhone" class="auth-static"></div>
+        </div>
+
+        <div class="auth-field">
+          <span>نوع پلن</span>
+          <div id="accountPlan" class="auth-static"></div>
+        </div>
+
+        <div class="auth-field">
+          <span>کد معرف</span>
+          <div id="accountRef" class="auth-static">فعلاً تنظیم نشده</div>
+        </div>
+
+        <button type="button" class="auth-submit" id="logoutButton">
+          خروج از حساب
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- اسکریپت رفتار لاگین و کارت‌ها -->
+  <script src="auth.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>ورود ادمین | میمیکس</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- فونت وزیرمتن مثل صفحه اصلی -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <style>
+    .admin-login-box {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .admin-login-title {
+      margin: 0 0 8px;
+      font-size: 18px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .admin-login-note {
+      margin: 0 0 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .admin-error {
+      margin: 4px 0 0;
+      font-size: 11px;
+      color: #ff8484;
+      text-align: center;
+    }
+    /* استایل‌های مخصوص چشم رمز را بعداً اضافه می‌کنیم */
+  </style>
+</head>
+<body>
+  <div class="app-bg">
+    <div class="app-root">
+
+      <main class="shell admin-login-box">
+        <h1 class="admin-login-title">ورود ادمین</h1>
+        <p class="admin-login-note">
+          برای دیدن اطلاعات کاربران، یوزرنیم و پسورد مدیر را وارد کن.
+        </p>
+
+        <form class="auth-form" id="adminLoginForm" autocomplete="off">
+          <!-- یوزرنیم -->
+          <label class="auth-field">
+            <span>یوزرنیم</span>
+            <input
+              id="adminUser"
+              type="text"
+              placeholder="مثلاً mimixir"
+              required
+            >
+          </label>
+
+          <!-- رمز عبور با آیکون چشم -->
+          <label class="auth-field">
+            <span>رمز عبور</span>
+            <div class="admin-pass-wrap">
+              <input
+                id="adminPass"
+                type="password"
+                placeholder="رمز عبور"
+                required
+              >
+              <button
+                type="button"
+                class="password-toggle"
+                id="togglePass"
+                aria-label="نمایش / مخفی کردن رمز"
+              ></button>
+            </div>
+          </label>
+
+          <button type="submit" class="auth-submit">
+            ورود به پنل
+          </button>
+
+          <p class="admin-error" id="adminError"></p>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // یوزر/پسورد ثابت (هر وقت خواستی عوضش کن)
+    const ADMIN_USER = "mimixir";      // طبق اسکرین‌شاتت
+    const ADMIN_PASS = "mimix2025";    // هر چی خودت گذاشتی همین را بگذار
+
+    const form   = document.getElementById("adminLoginForm");
+    const user   = document.getElementById("adminUser");
+    const pass   = document.getElementById("adminPass");
+    const error  = document.getElementById("adminError");
+    const toggle = document.getElementById("togglePass");
+
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const u = (user.value || "").trim();
+      const p = (pass.value || "").trim();
+
+      if (u === ADMIN_USER && p === ADMIN_PASS) {
+        localStorage.setItem("mimix_admin_logged_in", "1");
+        window.location.href = "/admini/dashboard.html";
+      } else {
+        error.textContent = "یوزرنیم یا رمز عبور اشتباه است.";
+      }
+    });
+
+    // نمایش / مخفی کردن رمز
+    toggle?.addEventListener("click", () => {
+      if (!pass) return;
+
+      if (pass.type === "password") {
+        pass.type = "text";
+        toggle.classList.add("is-visible");
+      } else {
+        pass.type = "password";
+        toggle.classList.remove("is-visible");
+      }
+    });
+  </script>
+</body>
+</html>
